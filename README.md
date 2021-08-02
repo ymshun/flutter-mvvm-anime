@@ -1,4 +1,6 @@
-# anime_api
+# [WIP]flutter-mvvm-anime-app
+
+<img width="300" src="https://user-images.githubusercontent.com/52367439/127892448-bd9a59c5-2b6a-473a-8829-5c29905899b3.png"/>
 
 A new Flutter project.
 
