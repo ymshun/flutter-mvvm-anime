@@ -5,6 +5,10 @@ strong-mode:
 implicit-casts: false
 implicit-dynamic: false
 
+exclude:
+  - "**/*.g.dart"
+  - "**/*.freezed.dart"
+
 linter:
 rules:
 - avoid_types_on_closure_parameters
