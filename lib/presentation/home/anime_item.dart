@@ -37,7 +37,6 @@ class AnimeItem extends HookWidget {
                         padding: EdgeInsets.all(12),
                         child: Column(
                           children: [
-                            // Spacer(flex: 1),
                             Text(
                               _anime.title ?? '',
                               maxLines: 3,
