@@ -1,7 +1,9 @@
 # flutter-mvvm-anime-app
 This is a flutter app that show you anime list using mvvm architecture.
 
-<img width="300" src="https://user-images.githubusercontent.com/52367439/127892448-bd9a59c5-2b6a-473a-8829-5c29905899b3.png"/>
+<!-- ![output1](https://user-images.githubusercontent.com/52367439/128092809-ef501482-d07d-4655-b74b-6cffb523275f.gif) -->
+
+<img width="250" src="https://user-images.githubusercontent.com/52367439/128092809-ef501482-d07d-4655-b74b-6cffb523275f.gif"/> <img width="250" src="https://user-images.githubusercontent.com/52367439/128091183-b26c1ead-7fe1-4b3b-acbb-00217606556d.PNG"/>
 
 # Architecture
 ## MVVM
