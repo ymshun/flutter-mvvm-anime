@@ -31,6 +31,17 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> fetchTopRatingAnime() {
     if (isLoadingNextPage) return Future.value(null);
+    _nextPage = 0;
+    _animeList = null;
+    changeLoadingState();
+    return _animeRepository.getTopRatingAnime(_nextPage.toString()).then((value) {
+      if (value.isSuccess) _nextPage++;
+      _animeList = value;
+    }).whenComplete(() => changeLoadingState());
+  }
+
+  Future<void> fetchTopRatingAnimeNextPage() {
+    if (isLoadingNextPage) return Future.value(null);
     changeLoadingState();
     return _animeRepository.getTopRatingAnime(_nextPage.toString()).then((value) {
       if (value.isSuccess) {
@@ -43,10 +54,22 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   Future<void> searchAnime(String query) {
-    debugPrint('query: $query');
-
     if (isLoadingNextPage) return Future.value(null);
+    _nextPage = 1;
     _animeList = null;
+    changeLoadingState();
+    return _animeRepository.searchAnime(query, _nextPage.toString()).then((value) {
+      if (value.isSuccess) {
+        _nextPage++;
+        _animeList == null ? _animeList = value : _animeList!.dataOrThrow.addAll(value.dataOrThrow);
+      } else {
+        _animeList = value;
+      }
+    }).whenComplete(() => changeLoadingState());
+  }
+
+  Future<void> searchAnimeNextPage(String query) {
+    if (isLoadingNextPage) return Future.value(null);
     changeLoadingState();
     return _animeRepository.searchAnime(query, _nextPage.toString()).then((value) {
       if (value.isSuccess) {

@@ -18,13 +18,14 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final _viewModel = useProvider(homeViewModelProvider);
     final _scrollController = ScrollController();
-    final FloatingSearchBarController _floatingSearchBarController = FloatingSearchBarController();
+    final _searchBarController = FloatingSearchBarController();
     final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    bool isSearching() => _searchBarController.query.isNotEmpty; // whether the user is searching or viewing top rating anime
 
     _scrollController.addListener(() {
       final scrollValue = _scrollController.offset / _scrollController.position.maxScrollExtent;
       if (scrollValue == 1.0) {
-        _viewModel.fetchTopRatingAnime();
+        isSearching() ? _viewModel.searchAnimeNextPage(_searchBarController.query) : _viewModel.fetchTopRatingAnimeNextPage();
       }
     });
 
@@ -38,10 +39,10 @@ class HomePageState extends State<HomePage> {
         body: _buildAnimeList(_viewModel, _scrollController),
         onSubmitted: (query) {
           _viewModel.searchAnime(query);
-          _floatingSearchBarController.close();
+          _searchBarController.close();
         },
         hint: 'Anime Search...',
-        controller: _floatingSearchBarController,
+        controller: _searchBarController,
         clearQueryOnClose: false,
         scrollPadding: const EdgeInsets.only(top: 16, bottom: 56),
         transitionDuration: const Duration(milliseconds: 300),
@@ -54,11 +55,13 @@ class HomePageState extends State<HomePage> {
         transition: SlideFadeFloatingSearchBarTransition(),
         actions: [
           FloatingSearchBarAction.icon(
-              icon: Icon(Icons.home),
-              onTap: () {
-                _floatingSearchBarController.clear();
-                setState(() {});
-              }),
+            icon: Icon(Icons.home),
+            onTap: () {
+              _searchBarController.clear();
+              setState(() {});
+              _viewModel.fetchTopRatingAnime();
+            },
+          ),
           FloatingSearchBarAction.searchToClear(showIfClosed: false),
         ],
         builder: (context, transition) {
@@ -73,20 +76,27 @@ class HomePageState extends State<HomePage> {
         ? Center(child: CircularProgressIndicator())
         : viewModel.animeList!.when(
             success: (data) {
-              return Scrollbar(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 56),
-                  child: FloatingSearchBarScrollNotifier(
-                    child: ListView.builder(
-                      itemCount: data.length,
-                      controller: scrollController,
-                      itemBuilder: (context, i) {
-                        return AnimeItem(viewModel, (anime) => _openWebView(anime.url ?? '', context), i, data[i]);
-                      },
-                    ),
-                  ),
-                ),
-              );
+              return data.length == 0
+                  ? Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Text('No Results'),
+                      ),
+                    )
+                  : Scrollbar(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 56),
+                        child: FloatingSearchBarScrollNotifier(
+                          child: ListView.builder(
+                            itemCount: data.length,
+                            controller: scrollController,
+                            itemBuilder: (context, i) {
+                              return AnimeItem(viewModel, (anime) => _openWebView(anime.url ?? '', context), i, data[i]);
+                            },
+                          ),
+                        ),
+                      ),
+                    );
             },
             failure: (e) {
               return Center(
