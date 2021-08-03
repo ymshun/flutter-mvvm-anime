@@ -8,10 +8,10 @@ part 'search_result_animes.g.dart';
 abstract class SearchResultAnimes with _$SearchResultAnimes {
 
   factory SearchResultAnimes({
-    @JsonKey(name: 'request_hash') @Default('') String hash,
-    @JsonKey(name: 'request_cached') @Default(false) bool isCached,
-    @JsonKey(name: 'results') @Default(<Anime>[]) List<Anime> searchResultAnimeList,
-    @JsonKey(name: 'last_page') @Default(0) int lastPage,
+    @JsonKey(name: 'request_hash') @Default('') String? hash,
+    @JsonKey(name: 'request_cached') @Default(false) bool? isCached,
+    @JsonKey(name: 'results') @Default(<Anime>[]) List<Anime>? searchResultAnimeList,
+    @JsonKey(name: 'last_page') @Default(0) int? lastPage,
 }) = _SearchResultAnimes;
 
   factory SearchResultAnimes.fromJson(Map<String, dynamic> json) => _$SearchResultAnimesFromJson(json);

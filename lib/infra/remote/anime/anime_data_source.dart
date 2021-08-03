@@ -1,4 +1,3 @@
-import 'package:anime_api/infra/model/anime/anime.dart';
 import 'package:anime_api/infra/model/search_result_animes/search_result_animes.dart';
 import 'package:anime_api/infra/model/top_rating_animes/top_rating_animes.dart';
 import 'package:anime_api/infra/remote/app_dio.dart';
@@ -19,9 +18,9 @@ abstract class AnimeDataSource {
     @Path('page') required String page,
   });
 
-  @GET('/v3/search')
+  @GET('/v3/search/anime')
   Future<SearchResultAnimes> searchAnime({
-    @Query('anime') required String searchQuery,
+    @Query('q') required String searchQuery,
     @Query('page') required String page,
   });
 }

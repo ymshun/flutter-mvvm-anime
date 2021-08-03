@@ -9,12 +9,12 @@ part of 'search_result_animes.dart';
 _$_SearchResultAnimes _$_$_SearchResultAnimesFromJson(
     Map<String, dynamic> json) {
   return _$_SearchResultAnimes(
-    hash: json['request_hash'] as String,
-    isCached: json['request_cached'] as bool,
-    searchResultAnimeList: (json['results'] as List<dynamic>)
-        .map((e) => Anime.fromJson(e as Map<String, dynamic>))
+    hash: json['request_hash'] as String?,
+    isCached: json['request_cached'] as bool?,
+    searchResultAnimeList: (json['results'] as List<dynamic>?)
+        ?.map((e) => Anime.fromJson(e as Map<String, dynamic>))
         .toList(),
-    lastPage: json['last_page'] as int,
+    lastPage: json['last_page'] as int?,
   );
 }
 

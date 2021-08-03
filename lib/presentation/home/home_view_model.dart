@@ -43,7 +43,10 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   Future<void> searchAnime(String query) {
+    debugPrint('query: $query');
+
     if (isLoadingNextPage) return Future.value(null);
+    _animeList = null;
     changeLoadingState();
     return _animeRepository.searchAnime(query, _nextPage.toString()).then((value) {
       if (value.isSuccess) {

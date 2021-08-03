@@ -22,13 +22,13 @@ class _$SearchResultAnimesTearOff {
 
   _SearchResultAnimes call(
       {@JsonKey(name: 'request_hash')
-          String hash = '',
+          String? hash = '',
       @JsonKey(name: 'request_cached')
-          bool isCached = false,
+          bool? isCached = false,
       @JsonKey(name: 'results')
-          List<Anime> searchResultAnimeList = const <Anime>[],
+          List<Anime>? searchResultAnimeList = const <Anime>[],
       @JsonKey(name: 'last_page')
-          int lastPage = 0}) {
+          int? lastPage = 0}) {
     return _SearchResultAnimes(
       hash: hash,
       isCached: isCached,
@@ -48,13 +48,13 @@ const $SearchResultAnimes = _$SearchResultAnimesTearOff();
 /// @nodoc
 mixin _$SearchResultAnimes {
   @JsonKey(name: 'request_hash')
-  String get hash => throw _privateConstructorUsedError;
+  String? get hash => throw _privateConstructorUsedError;
   @JsonKey(name: 'request_cached')
-  bool get isCached => throw _privateConstructorUsedError;
+  bool? get isCached => throw _privateConstructorUsedError;
   @JsonKey(name: 'results')
-  List<Anime> get searchResultAnimeList => throw _privateConstructorUsedError;
+  List<Anime>? get searchResultAnimeList => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_page')
-  int get lastPage => throw _privateConstructorUsedError;
+  int? get lastPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,10 +68,10 @@ abstract class $SearchResultAnimesCopyWith<$Res> {
           SearchResultAnimes value, $Res Function(SearchResultAnimes) then) =
       _$SearchResultAnimesCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'request_hash') String hash,
-      @JsonKey(name: 'request_cached') bool isCached,
-      @JsonKey(name: 'results') List<Anime> searchResultAnimeList,
-      @JsonKey(name: 'last_page') int lastPage});
+      {@JsonKey(name: 'request_hash') String? hash,
+      @JsonKey(name: 'request_cached') bool? isCached,
+      @JsonKey(name: 'results') List<Anime>? searchResultAnimeList,
+      @JsonKey(name: 'last_page') int? lastPage});
 }
 
 /// @nodoc
@@ -94,19 +94,19 @@ class _$SearchResultAnimesCopyWithImpl<$Res>
       hash: hash == freezed
           ? _value.hash
           : hash // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       isCached: isCached == freezed
           ? _value.isCached
           : isCached // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       searchResultAnimeList: searchResultAnimeList == freezed
           ? _value.searchResultAnimeList
           : searchResultAnimeList // ignore: cast_nullable_to_non_nullable
-              as List<Anime>,
+              as List<Anime>?,
       lastPage: lastPage == freezed
           ? _value.lastPage
           : lastPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -119,10 +119,10 @@ abstract class _$SearchResultAnimesCopyWith<$Res>
       __$SearchResultAnimesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'request_hash') String hash,
-      @JsonKey(name: 'request_cached') bool isCached,
-      @JsonKey(name: 'results') List<Anime> searchResultAnimeList,
-      @JsonKey(name: 'last_page') int lastPage});
+      {@JsonKey(name: 'request_hash') String? hash,
+      @JsonKey(name: 'request_cached') bool? isCached,
+      @JsonKey(name: 'results') List<Anime>? searchResultAnimeList,
+      @JsonKey(name: 'last_page') int? lastPage});
 }
 
 /// @nodoc
@@ -147,19 +147,19 @@ class __$SearchResultAnimesCopyWithImpl<$Res>
       hash: hash == freezed
           ? _value.hash
           : hash // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       isCached: isCached == freezed
           ? _value.isCached
           : isCached // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       searchResultAnimeList: searchResultAnimeList == freezed
           ? _value.searchResultAnimeList
           : searchResultAnimeList // ignore: cast_nullable_to_non_nullable
-              as List<Anime>,
+              as List<Anime>?,
       lastPage: lastPage == freezed
           ? _value.lastPage
           : lastPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -178,16 +178,16 @@ class _$_SearchResultAnimes implements _SearchResultAnimes {
 
   @override
   @JsonKey(name: 'request_hash')
-  final String hash;
+  final String? hash;
   @override
   @JsonKey(name: 'request_cached')
-  final bool isCached;
+  final bool? isCached;
   @override
   @JsonKey(name: 'results')
-  final List<Anime> searchResultAnimeList;
+  final List<Anime>? searchResultAnimeList;
   @override
   @JsonKey(name: 'last_page')
-  final int lastPage;
+  final int? lastPage;
 
   @override
   String toString() {
@@ -232,26 +232,26 @@ class _$_SearchResultAnimes implements _SearchResultAnimes {
 
 abstract class _SearchResultAnimes implements SearchResultAnimes {
   factory _SearchResultAnimes(
-      {@JsonKey(name: 'request_hash') String hash,
-      @JsonKey(name: 'request_cached') bool isCached,
-      @JsonKey(name: 'results') List<Anime> searchResultAnimeList,
-      @JsonKey(name: 'last_page') int lastPage}) = _$_SearchResultAnimes;
+      {@JsonKey(name: 'request_hash') String? hash,
+      @JsonKey(name: 'request_cached') bool? isCached,
+      @JsonKey(name: 'results') List<Anime>? searchResultAnimeList,
+      @JsonKey(name: 'last_page') int? lastPage}) = _$_SearchResultAnimes;
 
   factory _SearchResultAnimes.fromJson(Map<String, dynamic> json) =
       _$_SearchResultAnimes.fromJson;
 
   @override
   @JsonKey(name: 'request_hash')
-  String get hash => throw _privateConstructorUsedError;
+  String? get hash => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'request_cached')
-  bool get isCached => throw _privateConstructorUsedError;
+  bool? get isCached => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'results')
-  List<Anime> get searchResultAnimeList => throw _privateConstructorUsedError;
+  List<Anime>? get searchResultAnimeList => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'last_page')
-  int get lastPage => throw _privateConstructorUsedError;
+  int? get lastPage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SearchResultAnimesCopyWith<_SearchResultAnimes> get copyWith =>

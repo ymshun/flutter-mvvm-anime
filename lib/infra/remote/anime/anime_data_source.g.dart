@@ -32,15 +32,12 @@ class _AnimeDataSource implements AnimeDataSource {
   Future<SearchResultAnimes> searchAnime(
       {required searchQuery, required page}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'anime': searchQuery,
-      r'page': page
-    };
+    final queryParameters = <String, dynamic>{r'q': searchQuery, r'page': page};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<SearchResultAnimes>(
             Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/v3/search',
+                .compose(_dio.options, '/v3/search/anime',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SearchResultAnimes.fromJson(_result.data!);

@@ -26,7 +26,7 @@ class AnimeRepositoryImpl implements AnimeRepository {
   Future<Result<List<Anime>>> searchAnime(String query, String page) {
     return Result.guardFuture(() async {
       final result = await _animeDataSource.searchAnime(searchQuery: query, page: page);
-      return result.searchResultAnimeList;
+      return result.searchResultAnimeList ?? [];
     });
   }
 }

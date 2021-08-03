@@ -24,6 +24,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   transparent_image: ^2.0.0
   webview_flutter: ^2.0.10
+  material_floating_search_bar: ^0.3.4
 
 dev_dependencies:
   flutter_test:
