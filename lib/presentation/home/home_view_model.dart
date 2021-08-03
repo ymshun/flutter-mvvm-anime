@@ -20,7 +20,7 @@ class HomeViewModel extends ChangeNotifier {
 
   Result<List<Anime>>? get animeList => _animeList;
 
-  int _nextPage = 0;
+  int _nextPage = 1;  // pagination
 
   bool isLoadingNextPage = false;
 
@@ -31,7 +31,8 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> fetchTopRatingAnime() {
     if (isLoadingNextPage) return Future.value(null);
-    _nextPage = 0;
+    // initialize pagination and list data
+    _nextPage = 1;
     _animeList = null;
     changeLoadingState();
     return _animeRepository.getTopRatingAnime(_nextPage.toString()).then((value) {
@@ -55,6 +56,7 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> searchAnime(String query) {
     if (isLoadingNextPage) return Future.value(null);
+    // initialize pagination and list data
     _nextPage = 1;
     _animeList = null;
     changeLoadingState();
