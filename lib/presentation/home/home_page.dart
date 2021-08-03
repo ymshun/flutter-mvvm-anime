@@ -35,9 +35,7 @@ class HomePage extends HookWidget {
                     itemCount: data.length,
                     controller: _scrollController,
                     itemBuilder: (context, i) {
-                      return AnimeItem(_viewModel, (anime) {
-                        _openWebView(anime.url ?? '', context);
-                      }, i, data[i]);
+                      return AnimeItem(_viewModel, (anime) => _openWebView(anime.url ?? '', context), i, data[i]);
                     },
                   ),
                 );
@@ -48,7 +46,6 @@ class HomePage extends HookWidget {
                 );
               },
             ),
-      // : Center(child: Text('test')),
     );
   }
 
